@@ -2,7 +2,7 @@
 
 SELECT title FROM songs WHERE artist = 'Queen';
 
-#De la tabla:
+#De la Base de datos:
 CREATE TABLE artists (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     name TEXT,

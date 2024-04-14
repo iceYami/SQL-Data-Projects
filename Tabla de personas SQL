@@ -81,5 +81,32 @@ WHERE p1.id <> p2.id;
 #Encontrar personas con email repetido
 SELECT email, COUNT(*) AS cantidad_personas
 FROM Personas
+
+#Selecciona  nombre (concatena nombre y apellidos),  edad (calculandola a partir de la fecha de de nacimiento) y nacionalidad
+#Cuenta el número total.
+#Filtra por puesto "Desarrollador" con mínimo 5 años de experiencia.
+#Agrupa por nacionalidad.
+#Filtra grupos que tienen más de una persona.
+#Ordena por edad descendente.
+#Limita máximo 3 filas.
+
+SELECT 
+    CONCAT(nombre, ' ', apellidos) AS nombre_completo,
+    YEAR(CURDATE()) - YEAR(fecha_nacimiento) AS edad,
+    nacionalidad,
+    COUNT(*) AS total_personas
+FROM 
+    Personas
+WHERE 
+    puesto_laboral LIKE '%Desarrollador%' AND
+    anos_experiencia >= 5
+GROUP BY 
+    nacionalidad
+HAVING 
+    COUNT(*) > 1
+ORDER BY 
+    edad DESC
+LIMIT 
+    3;
 GROUP BY email
 HAVING COUNT(*) > 1;
